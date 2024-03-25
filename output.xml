@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-03-25T18:18:51.720308" rpa="false" schemaversion="5">
+<suite id="s1" name="Plan Reis" source="c:\projects\NS-Sef\tests\plan reis.robot">
+<test id="s1-t1" name="01 - Open en plan reis" line="13">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-25T18:18:52.549257" level="INFO">${van} = Rotterdam Centraal</msg>
+<var>${van}</var>
+<arg>Rotterdam Centraal</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-25T18:18:52.549257" elapsed="0.015627"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-25T18:18:52.566027" level="INFO">${naar} = Amsterdam Centraal</msg>
+<var>${naar}</var>
+<arg>Amsterdam Centraal</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-25T18:18:52.566027" elapsed="0.000000"/>
+</kw>
+<kw name="Open URL" owner="openpage">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-03-25T18:18:52.567575" level="INFO">{"browser": "chromium", "headless": false, "channel": "chrome", "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\projects\\NS-Sef\\browser\\traces\\306dcfa3-e26f-4cb8-a23c-29fb2f61b0dc"}</msg>
+<msg time="2024-03-25T18:18:52.776431" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"channel":"chrome","chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\projects\\NS-Sef\\browser\\traces\\306dcfa3-e26f-4cb8-a23c-29fb2f61b0dc"}</msg>
+<arg>${browser}</arg>
+<arg>headless=${headless}</arg>
+<arg>channel=${channel}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-03-25T18:18:52.567575" elapsed="0.208856"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2024-03-25T18:18:55.662062" level="INFO">Successfully initialized new page object and opened url: https://www.ns.nl/</msg>
+<msg time="2024-03-25T18:18:55.662062" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-03-25T18:18:52.776431" elapsed="2.885631"/>
+</kw>
+<kw name="Set Viewport Size" owner="Browser">
+<msg time="2024-03-25T18:18:55.721696" level="INFO">Set viewport size to: [object Object]</msg>
+<arg>1920</arg>
+<arg>1080</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Sets current Pages viewport size to specified dimensions.</doc>
+<status status="PASS" start="2024-03-25T18:18:55.663229" elapsed="0.058467"/>
+</kw>
+<kw name="Accepteer cookies" owner="openpage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-03-25T18:18:55.798732" level="INFO">Waited for Element with selector //h2[@class="cookie-notice__heading"] at state visible</msg>
+<arg>//h2[@class="cookie-notice__heading"]</arg>
+<arg>visible</arg>
+<arg>timeout=2s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-03-25T18:18:55.723716" elapsed="0.075016"/>
+</kw>
+<msg time="2024-03-25T18:18:55.799732" level="INFO">${cookie_popup} = True</msg>
+<var>${cookie_popup}</var>
+<arg>Wait For Elements State</arg>
+<arg>//h2[@class="cookie-notice__heading"]</arg>
+<arg>visible</arg>
+<arg>timeout=2s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-03-25T18:18:55.722697" elapsed="0.077035"/>
+</kw>
+<if>
+<branch type="IF" condition="${cookie_popup} == ${TRUE}">
+<kw name="Click" owner="Browser">
+<arg>//button[text()="Akkoord"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:55.799732" elapsed="0.286558"/>
+</kw>
+<status status="PASS" start="2024-03-25T18:18:55.799732" elapsed="0.286558"/>
+</branch>
+<status status="PASS" start="2024-03-25T18:18:55.799732" elapsed="0.286558"/>
+</if>
+<status status="PASS" start="2024-03-25T18:18:55.722697" elapsed="0.363593"/>
+</kw>
+<arg>${home_url}</arg>
+<status status="PASS" start="2024-03-25T18:18:52.567380" elapsed="3.525293"/>
+</kw>
+<kw name="Plan reis" owner="zoek">
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-03-25T18:18:56.097671" level="INFO">Fills the text 'Rotterdam Centraal' in the given field.</msg>
+<arg>//input[@name="FROM"]</arg>
+<arg>${van}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:56.096675" elapsed="0.228143"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//span[@class="autosuggestItem has-stop"][text()="${van}"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:56.325670" elapsed="0.371802"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-03-25T18:18:56.697472" level="INFO">Fills the text 'Amsterdam Centraal' in the given field.</msg>
+<arg>//input[@name="TO"]</arg>
+<arg>${naar}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:56.697472" elapsed="0.039637"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//span[@class="autosuggestItem has-stop"][text()="${naar}"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:56.737109" elapsed="0.273462"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//span[text()="Plannen"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:57.010571" elapsed="0.122417"/>
+</kw>
+<arg>${van}</arg>
+<arg>${naar}</arg>
+<status status="PASS" start="2024-03-25T18:18:56.094678" elapsed="1.038310"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-03-25T18:18:58.947884" level="INFO">Waited for Element with selector //div[@data-test="tripAdviceTravelOptions"] at state visible</msg>
+<arg>//div[@data-test="tripAdviceTravelOptions"]</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-03-25T18:18:57.133745" elapsed="1.814139"/>
+</kw>
+<kw name="Get Text" owner="Browser">
+<msg time="2024-03-25T18:18:59.254730" level="INFO">Text: 'vertrek 18:24 aankomst 19:07 reisduur 0:43 spoor 11 U reist met Intercity direct'</msg>
+<msg time="2024-03-25T18:18:59.254730" level="INFO">${description} = vertrek 18:24 aankomst 19:07 reisduur 0:43 spoor 11 U reist met Intercity direct</msg>
+<var>${description}</var>
+<arg>//a[contains(@class,"rio-jp-travel-option-active")]/span[contains(@id,"trip-description")]</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:58.983616" elapsed="0.271114"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-25T18:18:59.255731" level="INFO">vertrek 18:24 aankomst 19:07 reisduur 0:43 spoor 11 U reist met Intercity direct</msg>
+<arg>${description}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-25T18:18:59.255731" elapsed="0.000998"/>
+</kw>
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2024-03-25T18:18:59.634190" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/robotframework-browser-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/robotframework-browser-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="PASS" start="2024-03-25T18:18:59.256729" elapsed="0.378476"/>
+</kw>
+<kw name="Bestel treinkaartje" owner="zoek">
+<kw name="Click" owner="Browser">
+<arg>//span[text()=" Bestel treinkaartje "]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:18:59.636190" elapsed="0.245535"/>
+</kw>
+<status status="PASS" start="2024-03-25T18:18:59.636190" elapsed="0.245535"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-03-25T18:19:03.194494" level="INFO">Waited for Element with selector //h1[text()=" Koop kaartjes "] at state visible</msg>
+<arg>//h1[text()=" Koop kaartjes "]</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-03-25T18:18:59.881725" elapsed="3.313766"/>
+</kw>
+<status status="PASS" start="2024-03-25T18:18:52.549257" elapsed="10.647232"/>
+</test>
+<test id="s1-t2" name="02 - vertek en bestemming zijn hetzelfde" line="28">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-25T18:19:03.650335" level="INFO">${van} = Rotterdam Centraal</msg>
+<var>${van}</var>
+<arg>Rotterdam Centraal</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-25T18:19:03.650335" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-03-25T18:19:03.651381" level="INFO">${naar} = Rotterdam Centraal</msg>
+<var>${naar}</var>
+<arg>Rotterdam Centraal</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-03-25T18:19:03.651381" elapsed="0.001018"/>
+</kw>
+<kw name="Open URL" owner="openpage">
+<kw name="New Browser" owner="Browser">
+<msg time="2024-03-25T18:19:03.654429" level="INFO">Switching browser to browser=da43da8b-bfff-4851-9c63-33952ce8fe10</msg>
+<msg time="2024-03-25T18:19:03.657474" level="INFO">Successfully changed active browser: browser=da43da8b-bfff-4851-9c63-33952ce8fe10</msg>
+<msg time="2024-03-25T18:19:03.657474" level="INFO">Reusing existing browser with id: browser=da43da8b-bfff-4851-9c63-33952ce8fe10</msg>
+<arg>${browser}</arg>
+<arg>headless=${headless}</arg>
+<arg>channel=${channel}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2024-03-25T18:19:03.653413" elapsed="0.004061"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2024-03-25T18:19:05.927762" level="INFO">Successfully initialized new page object and opened url: https://www.ns.nl/</msg>
+<msg time="2024-03-25T18:19:05.927762" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>${url}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2024-03-25T18:19:03.658487" elapsed="2.269275"/>
+</kw>
+<kw name="Set Viewport Size" owner="Browser">
+<msg time="2024-03-25T18:19:05.975471" level="INFO">Set viewport size to: [object Object]</msg>
+<arg>1920</arg>
+<arg>1080</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Sets current Pages viewport size to specified dimensions.</doc>
+<status status="PASS" start="2024-03-25T18:19:05.927762" elapsed="0.048255"/>
+</kw>
+<kw name="Accepteer cookies" owner="openpage">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-03-25T18:19:06.099917" level="INFO">Waited for Element with selector //h2[@class="cookie-notice__heading"] at state visible</msg>
+<arg>//h2[@class="cookie-notice__heading"]</arg>
+<arg>visible</arg>
+<arg>timeout=2s</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-03-25T18:19:05.977021" elapsed="0.123888"/>
+</kw>
+<msg time="2024-03-25T18:19:06.101928" level="INFO">${cookie_popup} = True</msg>
+<var>${cookie_popup}</var>
+<arg>Wait For Elements State</arg>
+<arg>//h2[@class="cookie-notice__heading"]</arg>
+<arg>visible</arg>
+<arg>timeout=2s</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-03-25T18:19:05.977021" elapsed="0.124907"/>
+</kw>
+<if>
+<branch type="IF" condition="${cookie_popup} == ${TRUE}">
+<kw name="Click" owner="Browser">
+<arg>//button[text()="Akkoord"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:19:06.103933" elapsed="0.208138"/>
+</kw>
+<status status="PASS" start="2024-03-25T18:19:06.102933" elapsed="0.209138"/>
+</branch>
+<status status="PASS" start="2024-03-25T18:19:06.102933" elapsed="0.209138"/>
+</if>
+<status status="PASS" start="2024-03-25T18:19:05.976017" elapsed="0.336054"/>
+</kw>
+<arg>${home_url}</arg>
+<status status="PASS" start="2024-03-25T18:19:03.652399" elapsed="2.659672"/>
+</kw>
+<kw name="Plan reis" owner="zoek">
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-03-25T18:19:06.315071" level="INFO">Fills the text 'Rotterdam Centraal' in the given field.</msg>
+<arg>//input[@name="FROM"]</arg>
+<arg>${van}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:19:06.314071" elapsed="0.265871"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//span[@class="autosuggestItem has-stop"][text()="${van}"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:19:06.579942" elapsed="0.388850"/>
+</kw>
+<kw name="Fill Text" owner="Browser">
+<msg time="2024-03-25T18:19:06.968792" level="INFO">Fills the text 'Rotterdam Centraal' in the given field.</msg>
+<arg>//input[@name="TO"]</arg>
+<arg>${naar}</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Clears and fills the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:19:06.968792" elapsed="0.074061"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//span[@class="autosuggestItem has-stop"][text()="${naar}"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:19:07.042853" elapsed="0.271214"/>
+</kw>
+<kw name="Click" owner="Browser">
+<arg>//span[text()="Plannen"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2024-03-25T18:19:07.314067" elapsed="0.075657"/>
+</kw>
+<arg>${van}</arg>
+<arg>${naar}</arg>
+<status status="PASS" start="2024-03-25T18:19:06.313072" elapsed="1.076652"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-03-25T18:19:07.395045" level="INFO">Waited for Element with selector (//input[@name="FROM"]/following::span[text()="Van en naar zijn hetzelfde"])[1] at state visible</msg>
+<arg>(//input[@name="FROM"]/following::span[text()="Van en naar zijn hetzelfde"])[1]</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-03-25T18:19:07.392384" elapsed="0.002661"/>
+</kw>
+<kw name="Wait For Elements State" owner="Browser">
+<msg time="2024-03-25T18:19:07.395045" level="INFO">Waited for Element with selector (//input[@name="TO"]/following::span[text()="Van en naar zijn hetzelfde"])[1] at state visible</msg>
+<arg>(//input[@name="TO"]/following::span[text()="Van en naar zijn hetzelfde"])[1]</arg>
+<arg>visible</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for the element found by ``selector`` to satisfy state option.</doc>
+<status status="PASS" start="2024-03-25T18:19:07.395045" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-03-25T18:19:03.645257" elapsed="3.749788"/>
+</test>
+<status status="PASS" start="2024-03-25T18:18:51.728906" elapsed="16.075895"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Plan Reis">Plan Reis</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
